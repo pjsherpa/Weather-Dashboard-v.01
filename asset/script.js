@@ -12,18 +12,19 @@ var currentWeather = document.getElementById("weatherContainer");
 var forecast = document.getElementById("Forecast");
 //api Key to be added when we fetch the url
 var apiKey = "f2c131fc5bc12a5320fc9c5062b3a515";
+var selectCity;
 
 renderLastCityName();
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var cityName = searchforCity.value.trim();
-
+  localStorage.setItem("cityName", JSON.stringify(cityName));
   if (cityName) {
     var printCityname = function (City) {
       getCitySearch(City);
       var newBtn = document.createElement("button");
-      newBtn.classList = "btn btn-secondary";
+      newBtn.classList = "btn btn-secondary data-city";
       newBtn.style.marginTop = "30px";
       newBtn.style.width = "18rem";
       var listDetail = City;
@@ -31,19 +32,30 @@ var handleFormSubmit = function (event) {
       listBtn.appendChild(newBtn);
       // reset form
       searchforCity.value.trim("");
-      localStorage.setItem("cityName", listDetail);
     };
   } else {
     alert("Please enter a City name");
   }
-
   printCityname(cityName);
 };
-//create the buttons
 
+var buttonClickHandler = function (event) {
+  event.preventDefault();
+  //the name of city choices given on the beginning
+  selectCity = event.target.getAttribute("btn-secondary");
+
+  if (selectCity) {
+    var lastCityName = getCitySearch(selectCity);
+
+    //haven't linked this yet or created on HTML
+  }
+  console.log("button clicked", lastCityName);
+};
+//create the buttons
 function getCitySearch(search) {
   var url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${apiKey}`;
   //this clears out the weathercotainer when multipleclicks are made
+
   currentWeather.textContent = " ";
   forecast.textContent = " ";
   console.log(url);
@@ -153,8 +165,9 @@ function getCitySearch(search) {
 }
 function renderLastCityName(event) {
   lastCityName = localStorage.getItem("cityName");
-  searchforCity.value.trim();
+  searchforCity.value.trim(listBtn);
 }
 
 searchbtn[0].addEventListener("click", handleFormSubmit);
 renderLastCityName();
+listBtn.addEventListener("click", buttonClickHandler);
