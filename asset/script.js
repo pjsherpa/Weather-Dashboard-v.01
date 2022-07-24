@@ -45,6 +45,7 @@ function getCitySearch(search) {
   var url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${apiKey}`;
   //this clears out the weathercotainer when multipleclicks are made
   currentWeather.textContent = " ";
+  forecast.textContent = " ";
   console.log(url);
   fetch(url)
     .then(function (response) {
@@ -64,10 +65,15 @@ function getCitySearch(search) {
           var hCity = document.createElement("h3");
           var city = searchforCity.value.trim();
           hCity.textContent = city;
+
           var htoday = document.createElement("h3");
-          var today = moment();
-          var date = today.format("MMM Do, YYYY");
-          htoday.textContent = date;
+          var dtCon = data.daily[0].dt;
+          var milliseconds = dtCon * 1000;
+          var date = new Date(milliseconds);
+          var humanDateFormattoday = date.toLocaleDateString("en-us");
+
+          htoday.textContent = humanDateFormattoday;
+
           var ptemp = document.createElement("p");
           var temp = `Temp:${data.current.temp} ℉`;
           ptemp.textContent = temp;
@@ -102,10 +108,18 @@ function getCitySearch(search) {
           }
           for (i = 1; i < 6; i++) {
             var div = document.createElement("div");
-            var divC = div.classList.add("card-body");
-            var pIcon = document.createElement("p");
-            var icon = data.daily[i].weather.icon;
-            pIcon.textContent = icon;
+            div.classList.add("col-sm-2");
+            var div2 = document.createElement("div");
+            div2.classList.add("card");
+            var div3 = document.createElement("div");
+            div3.classList.add("card-body");
+
+            var imgEl = document.createElement("img");
+            var icon = data.daily[i].weather[0].icon;
+            var iconurl = "http://openweathermap.org/img/wn/" + icon + ".png";
+            imgEl.setAttribute("src", iconurl);
+            console.log(iconurl);
+
             var pTemps = document.createElement("p");
             var temps = `Temp:${data.daily[i].temp} ℉`;
             pTemps.textContent = temp;
@@ -115,10 +129,23 @@ function getCitySearch(search) {
             var phumiditys = document.createElement("p");
             var humiditys = `Humidity:${data.daily[i].humidity}`;
             phumiditys.textContent = humiditys;
-            div.appendChild(pIcon);
-            div.appendChild(pTemps);
-            div.appendChild(pWinds);
-            div.appendChild(phumiditys);
+            //ref https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
+            var dtConvert = data.daily[i].dt;
+            var milliseconds = dtConvert * 1000;
+            var dates = new Date(milliseconds);
+            var humanDateFormat = dates.toLocaleDateString("en-us");
+
+            var pdates = document.createElement("p");
+            console.log(humanDateFormat);
+            pdates.textContent = humanDateFormat;
+
+            div3.appendChild(pdates);
+            div3.appendChild(imgEl);
+            div3.appendChild(pTemps);
+            div3.appendChild(pWinds);
+            div3.appendChild(phumiditys);
+            div2.appendChild(div3);
+            div.appendChild(div2);
             forecast.appendChild(div);
           }
         });
