@@ -16,10 +16,10 @@ Features:
 
 1. The page displays a form input to search for a city name with a search and clear button presented(ref:img1).
 2. Once city name provided(ref:img3) and search button clicked, then current and future weather conditions for that city is presented(ref:img2).
-3. Presentation includes the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index(ref:img3).
-4. Colour for UV index changes to indicate whether the conditions are favorable, moderate, or severe.(below 2 favourable(color:green)(ref:img3),between 2 above & 6 moderate(color:yellow)(ref:img5),6 above severe(color:red)(ref:img6).
+3. Presentation includes the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index(ref:img2).
+4. Colour for UV index changes to indicate whether the conditions are favorable, moderate, or severe.(below 2 favourable(color:green)(ref:img4),between 2 above & 6 moderate(color:yellow)(ref:img5),6 above severe(color:red)(ref:img6).
 5. Once page refreshed all searches are provided in a search list below the clear button.
-6. Click on list button to see the weather condition again(ref:img4)..
+6. Click on list button to see the weather condition again(ref:img4).
 7. Click clear button to clear list(ref:img1). 
 
 HTML:
