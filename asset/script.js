@@ -1,5 +1,6 @@
 var searchforCity = document.getElementById("searchforCity");
-var searchbtn = document.getElementsByClassName("btn");
+var searchbtn = document.getElementsByClassName("main");
+var clearbtn = document.getElementsByClassName("clear");
 var listBtn = document.getElementById("listBtn");
 var currentWeather = document.getElementById("weatherContainer");
 var forecast = document.getElementById("Forecast");
@@ -63,7 +64,7 @@ var handleFormSubmit = function (event) {
 
 var buttonClickHandler = function (event) {
   event.preventDefault();
-  var selectCity = event.target;
+  var selectCity = event.target.textContent;
   console.log(selectCity);
   if (selectCity) {
     getCitySearch(selectCity);
@@ -175,6 +176,11 @@ function getCitySearch(search) {
         });
     });
 }
+
+clearbtn[0].addEventListener("click", function (event) {
+  previousSearch = [];
+  storeSearches();
+});
 
 searchbtn[0].addEventListener("click", handleFormSubmit);
 listBtn.addEventListener("click", buttonClickHandler);
