@@ -55,7 +55,7 @@ Screenshot:
 
 img1:
 
-<img width="1228" alt="Screen Shot 2022-07-24 at 11 32 50 PM" src="https://user-images.githubusercontent.com/105903416/180713347-34195a95-dcdf-42db-8cf8-3a21aaac7289.png">
+![Screen Shot 2022-07-25 at 12 04 32 AM](https://user-images.githubusercontent.com/105903416/180718330-8caa16f1-1e63-4dcb-b2c9-e52ee774dbd7.png)
 
 img2:
 
