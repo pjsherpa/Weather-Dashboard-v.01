@@ -33,7 +33,7 @@ function renderSearch() {
 function init() {
   // Get stored searches from localStorage
   var storedSearches = JSON.parse(localStorage.getItem("previousSearch"));
-  // If searches were retrieved from localStorage, update the previoussearch array to it ref:https://bobbyhadz.com/blog/javascript-prevent-adding-duplicates-array
+  // If searches were retrieved from localStorage, update the previoussearch array to it
   if (storedSearches !== null) {
     previousSearch = storedSearches;
   }
@@ -52,7 +52,7 @@ var handleFormSubmit = function (event) {
   if (cityName) {
     getCitySearch(cityName);
 
-    // pushing cityname to array to store for list but allowing duplicates to occur
+    // pushing cityname to array to store for list this stops duplicate city list button to occur ref:https://bobbyhadz.com/blog/javascript-prevent-adding-duplicates-array
     if (!previousSearch.includes(cityName)) {
       previousSearch.push(cityName);
     }
@@ -69,9 +69,9 @@ var buttonClickHandler = function (event) {
   console.log(selectCity);
   if (selectCity) {
     getCitySearch(selectCity);
-    var hCity = document.createElement("h3");
-    currentWeather.innerHTML = selectCity.toUpperCase();
-    currentWeather.appendChild(hCity);
+    var cityTitle = document.createElement("i");
+    cityTitle.textContent = selectCity.toUpperCase();
+    currentWeather.appendChild(cityTitle);
   } else {
     currentWeather.innerHTML = " ";
   }
@@ -100,8 +100,9 @@ function getCitySearch(search) {
           // current weather Display
 
           var hCity = document.createElement("h3");
+          var cityTitle = document.createElement("i");
           var city = searchforCity.value.trim();
-          hCity.textContent = city.toUpperCase();
+          cityTitle.textContent = city.toUpperCase();
           // converted dt to date
           var htoday = document.createElement("i");
           var dtCon = data.daily[0].dt;
@@ -115,6 +116,7 @@ function getCitySearch(search) {
           var iconurlCurrent =
             "http://openweathermap.org/img/wn/" + iconCurrent + ".png";
           imgElCurrent.setAttribute("src", iconurlCurrent);
+          hCity.appendChild(cityTitle);
           hCity.appendChild(htoday);
           hCity.appendChild(imgElCurrent);
           var ptemp = document.createElement("p");
