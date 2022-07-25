@@ -16,10 +16,10 @@ Features:
 
 1. The page displays a form input to search for a city name with a search and clear button presented(ref:img1).
 2. Once city name provided(ref:img3) and search button clicked, then current and future weather conditions for that city is presented(ref:img2).
-3. Presentation includes the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index(ref:img2).
-4. Colour for UV index changes to indicate whether the conditions are favorable, moderate, or severe.(below 2 favourable(color:green)(ref:img4),between 2 above & 6 moderate(color:yellow)(ref:img5),6 above severe(color:red)(ref:img6).
+3. Presentation includes the city name, the date, an icon representation of weather conditions(3 in one line),then follows the temperature, the humidity, the wind speed, and the UV index(ref:img2).
+4. Colour for UV index changes to indicate whether the conditions are favorable, moderate, or severe.(below 2 favourable(color:green)(ref:img2),between 2 above & 6 moderate(color:yellow)(ref:img5),6 above severe(color:red)(ref:img6).
 5. Once page refreshed all searches are provided in a search list below the clear button.
-6. Click on list button to see the weather condition again(ref:img4).
+6. Click on list button to see the weather condition again(ref:img2).
 7. Click clear button to clear list(ref:img1). 
 
 HTML:
@@ -59,21 +59,18 @@ img1:
 
 img2:
 
-![Screen Shot 2022-07-25 at 12 04 32 AM](https://user-images.githubusercontent.com/105903416/180718330-8caa16f1-1e63-4dcb-b2c9-e52ee774dbd7.png)
+![Screen Shot 2022-07-25 at 1 11 52 PM](https://user-images.githubusercontent.com/105903416/180876393-8039e6a8-7bce-444d-981f-aee21a552666.png)
 
 img3:
 
 <img width="363" alt="Screen Shot 2022-07-24 at 11 32 03 PM" src="https://user-images.githubusercontent.com/105903416/180713374-060145d2-a6b6-45c8-bc48-d404022cadfc.png">
 
+
 img4:
-
-<img width="1225" alt="Screen Shot 2022-07-24 at 11 33 19 PM" src="https://user-images.githubusercontent.com/105903416/180713412-fb0c1bef-6a17-4a8a-8601-c21edd9a167d.png">
-
-img5:
 
 <img width="341" alt="Screen Shot 2022-07-24 at 11 38 19 PM" src="https://user-images.githubusercontent.com/105903416/180713796-78cd5af8-178c-4699-bc4e-9ee1d0c19308.png">
 
-img 6:
+img 5:
 
 <img width="293" alt="Screen Shot 2022-07-24 at 11 36 48 PM" src="https://user-images.githubusercontent.com/105903416/180713823-a5f374e1-ee24-4c7d-bf7f-609405c7af32.png">
 
