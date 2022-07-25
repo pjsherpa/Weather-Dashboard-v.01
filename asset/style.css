@@ -1,0 +1,16 @@
+*{
+  font-family: 'Merriweather', serif;
+}
+
+h1{
+  font-weight:bold;
+  color:white;
+}
+
+span{
+  padding: 5px 5px;
+}
+
+#weatherContainer{
+  font-size:xx-large;
+  }

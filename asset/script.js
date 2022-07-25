@@ -14,7 +14,6 @@ function renderSearch() {
   // Render a new li for each todo
   for (var i = 0; i < previousSearch.length; i++) {
     var previousSearches = previousSearch[i];
-
     var li = document.createElement("li");
     li.classList = "btn btn-secondary data-city";
     li.style.marginTop = "30px";
@@ -49,16 +48,14 @@ function storeSearches() {
 
 var handleFormSubmit = function (event) {
   event.preventDefault();
-
   var cityName = searchforCity.value.trim();
   if (cityName) {
     getCitySearch(cityName);
     previousSearch.push(cityName);
-    // searchforCity.value = "";
   } else {
     alert("Please enter a City name");
   }
-  // renderSearch();
+
   storeSearches();
 };
 
@@ -68,6 +65,7 @@ var buttonClickHandler = function (event) {
   console.log(selectCity);
   if (selectCity) {
     getCitySearch(selectCity);
+    currentWeather.innerHTML = selectCity;
   }
 };
 function getCitySearch(search) {
@@ -94,14 +92,21 @@ function getCitySearch(search) {
           // current weather Display
           var hCity = document.createElement("h3");
           var city = searchforCity.value.trim();
-          hCity.textContent = city;
-          var htoday = document.createElement("h3");
+          hCity.textContent = city.toUpperCase();
           // converted dt to date
+          var htoday = document.createElement("h3");
           var dtCon = data.daily[0].dt;
           var milliseconds = dtCon * 1000;
           var date = new Date(milliseconds);
           var humanDateFormattoday = date.toLocaleDateString("en-us");
-          htoday.textContent = humanDateFormattoday;
+          htoday.textContent = `(${humanDateFormattoday})`;
+          var imgElCurrent = document.createElement("img");
+          var iconCurrent = data.daily[0].weather[0].icon;
+          console.log(iconCurrent);
+          var iconurlCurrent =
+            "http://openweathermap.org/img/wn/" + iconCurrent + ".png";
+          imgElCurrent.setAttribute("src", iconurlCurrent);
+
           var ptemp = document.createElement("p");
           var temp = `Temp:${data.current.temp} ℉`;
           ptemp.textContent = temp;
@@ -117,8 +122,10 @@ function getCitySearch(search) {
           var uviInd = data.current.uvi;
           sUvi.textContent = uviInd;
           pUvi.textContent = last;
-          currentWeather.appendChild(hCity);
-          currentWeather.appendChild(htoday);
+
+          currentWeather.appendChild(hCity),
+            currentWeather.appendChild(htoday),
+            currentWeather.appendChild(imgElCurrent);
           currentWeather.appendChild(ptemp);
           currentWeather.appendChild(pwind);
           currentWeather.appendChild(pHumidity);

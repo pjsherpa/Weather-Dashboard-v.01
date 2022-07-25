@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="asset/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Edu+NSW+ACT+Foundation&family=Fira+Sans:wght@100&family=Merriweather:wght@300&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script
       type="text/javascript"
@@ -14,25 +17,22 @@
 </head>
 <body>
  <header>
-  <h1 class="d-flex justify-content-center bg-primary {
-    --bs-bg-opacity: 50%;
-    background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
-  }">Weather Dashboard</h1>
+  <h1 class="d-flex justify-content-center bg-primary">.Weather Dashboard.☁️</h1>
  </header> 
 <main>
   <div class="container text-center">
     <div class="row">
     <div class="col-4 md-4">
     <form id="user-form" class="card-body">
-      <label class="form-label" style="width: 18rem;" for="SearchCity"><h2>Search for City</h1></label>
+      <label class="form-label" style="width: 18rem;" for="SearchCity"><h2>Search for a City🌎</h1></label>
       
       <input name="SearchCity" id="searchforCity" type="text" autofocus="true" class="form-input" style="width: 18rem;"/>
       <br>
       <br>
-      <button type="submit" style="width: 18rem;" class="btn btn-primary main">Search</button>
+      <button type="submit" style="width: 18rem;" class="btn btn-primary main">Search🔎</button>
       <br>
       <br>
-      <button type="submit" style="width: 18rem;" class="btn btn-primary clear">Clear</button>
+      <button type="submit" style="width: 18rem;" class="btn btn-warning clear">Clear</button>
     </form>
     <div class="flex-row" class="btn" id="listBtn">
       <!-- this is where we create new button element -->
@@ -45,10 +45,8 @@
       <div class="card" style="width: 50rem;">
       
         <div class="card-body" id="weatherContainer">
-          
-          
-      </div>
-
+   
+    </div>
     </div>
     <div>
     <h2>5-Day Forecast:</h2>
