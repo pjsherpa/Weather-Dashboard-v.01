@@ -1,7 +1,7 @@
 *{
   font-family: 'Merriweather', serif;
 }
-
+/* for consistency */
 h1{
   font-weight:bold;
   color:white;
@@ -13,4 +13,8 @@ span{
 
 #weatherContainer{
   font-size:xx-large;
+  }
+
+  .card-body-bg{
+    background-color: cornflowerblue;
   }

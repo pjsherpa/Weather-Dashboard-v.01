@@ -148,7 +148,7 @@ function getCitySearch(search) {
             var div2 = document.createElement("div");
             div2.classList.add("card");
             var div3 = document.createElement("div");
-            div3.classList.add("card-body");
+            div3.classList.add("card-body-bg");
             var imgEl = document.createElement("img");
             var icon = data.daily[i].weather[0].icon;
             var iconurl = "http://openweathermap.org/img/wn/" + icon + ".png";
