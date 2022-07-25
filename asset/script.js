@@ -1,17 +1,17 @@
 var searchforCity = document.getElementById("searchforCity");
 var searchbtn = document.getElementsByClassName("main");
+
 var clearbtn = document.getElementsByClassName("clear");
 var listBtn = document.getElementById("listBtn");
 var currentWeather = document.getElementById("weatherContainer");
+
 var forecast = document.getElementById("Forecast");
 var apiKey = "f2c131fc5bc12a5320fc9c5062b3a515";
 var previousSearch = [];
 
 function renderSearch() {
-  // Clear todoList element and update todoCountSpan
-  var cityName = searchforCity.value.trim();
-
   // Render a new li for each todo
+  listBtn.innerHTML = "";
   for (var i = 0; i < previousSearch.length; i++) {
     var previousSearches = previousSearch[i];
     var li = document.createElement("li");
@@ -21,9 +21,9 @@ function renderSearch() {
     li.textContent = previousSearches;
     li.value.trim = previousSearches;
     console.log(li);
-    li.setAttribute("data-index", i);
 
     var newBtn = document.createElement("button");
+    li.setAttribute("data-index", i);
 
     newBtn.appendChild(li);
     listBtn.appendChild(li);
@@ -31,18 +31,18 @@ function renderSearch() {
 }
 // This function is being called below and will run when the page loads.
 function init() {
-  // Get stored todos from localStorage
+  // Get stored searches from localStorage
   var storedSearches = JSON.parse(localStorage.getItem("previousSearch"));
-  // If todos were retrieved from localStorage, update the todos array to it
+  // If searches were retrieved from localStorage, update the previoussearch array to it ref:https://bobbyhadz.com/blog/javascript-prevent-adding-duplicates-array
   if (storedSearches !== null) {
     previousSearch = storedSearches;
   }
-  // This is a helper function that will render todos to the DOM
+  // This is a helper function that will render searches to the DOM
   renderSearch();
 }
 
 function storeSearches() {
-  // Stringify and set key in localStorage to todos array
+  // Stringify and set key in localStorage to previoussea array
   localStorage.setItem("previousSearch", JSON.stringify(previousSearch));
 }
 
@@ -51,11 +51,15 @@ var handleFormSubmit = function (event) {
   var cityName = searchforCity.value.trim();
   if (cityName) {
     getCitySearch(cityName);
-    previousSearch.push(cityName);
+
+    // pushing cityname to array to store for list but allowing duplicates to occur
+    if (!previousSearch.includes(cityName)) {
+      previousSearch.push(cityName);
+    }
   } else {
     alert("Please enter a City name");
   }
-
+  renderSearch();
   storeSearches();
 };
 
@@ -65,7 +69,11 @@ var buttonClickHandler = function (event) {
   console.log(selectCity);
   if (selectCity) {
     getCitySearch(selectCity);
-    currentWeather.innerHTML = selectCity;
+    var hCity = document.createElement("h3");
+    currentWeather.innerHTML = selectCity.toUpperCase();
+    currentWeather.appendChild(hCity);
+  } else {
+    currentWeather.innerHTML = " ";
   }
 };
 function getCitySearch(search) {
@@ -90,11 +98,12 @@ function getCitySearch(search) {
         })
         .then(function (data, search) {
           // current weather Display
+
           var hCity = document.createElement("h3");
           var city = searchforCity.value.trim();
           hCity.textContent = city.toUpperCase();
           // converted dt to date
-          var htoday = document.createElement("h3");
+          var htoday = document.createElement("i");
           var dtCon = data.daily[0].dt;
           var milliseconds = dtCon * 1000;
           var date = new Date(milliseconds);
@@ -106,7 +115,8 @@ function getCitySearch(search) {
           var iconurlCurrent =
             "http://openweathermap.org/img/wn/" + iconCurrent + ".png";
           imgElCurrent.setAttribute("src", iconurlCurrent);
-
+          hCity.appendChild(htoday);
+          hCity.appendChild(imgElCurrent);
           var ptemp = document.createElement("p");
           var temp = `Temp:${data.current.temp} ℉`;
           ptemp.textContent = temp;
@@ -123,9 +133,7 @@ function getCitySearch(search) {
           sUvi.textContent = uviInd;
           pUvi.textContent = last;
 
-          currentWeather.appendChild(hCity),
-            currentWeather.appendChild(htoday),
-            currentWeather.appendChild(imgElCurrent);
+          currentWeather.appendChild(hCity);
           currentWeather.appendChild(ptemp);
           currentWeather.appendChild(pwind);
           currentWeather.appendChild(pHumidity);
@@ -163,7 +171,7 @@ function getCitySearch(search) {
             var phumiditys = document.createElement("p");
             var humiditys = `Humidity:${data.daily[i].humidity}`;
             phumiditys.textContent = humiditys;
-            //ref https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript converting dt to date
+            //converting dt to date ref https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
             var dtConvert = data.daily[i].dt;
             var milliseconds = dtConvert * 1000;
             var dates = new Date(milliseconds);
