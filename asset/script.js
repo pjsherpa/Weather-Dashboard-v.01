@@ -10,13 +10,13 @@ var apiKey = "f2c131fc5bc12a5320fc9c5062b3a515";
 var previousSearch = [];
 
 function renderSearch() {
-  // Render a new li for each todo
+  // Render a new li for each search
   listBtn.innerHTML = "";
   for (var i = 0; i < previousSearch.length; i++) {
     var previousSearches = previousSearch[i];
     var li = document.createElement("li");
     li.classList = "btn btn-secondary data-city";
-    li.style.marginTop = "30px";
+    li.style.marginTop = "1px";
     li.style.width = "18rem";
     li.textContent = previousSearches;
     li.value.trim = previousSearches;
@@ -76,6 +76,7 @@ var buttonClickHandler = function (event) {
     currentWeather.innerHTML = " ";
   }
 };
+
 function getCitySearch(search) {
   var url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${apiKey}`;
   //this clears out the weathercontainer when multipleclicks are made
@@ -98,7 +99,6 @@ function getCitySearch(search) {
         })
         .then(function (data, search) {
           // current weather Display
-
           var hCity = document.createElement("h3");
           var cityTitle = document.createElement("i");
           var city = searchforCity.value.trim();
@@ -134,13 +134,13 @@ function getCitySearch(search) {
           var uviInd = data.current.uvi;
           sUvi.textContent = uviInd;
           pUvi.textContent = last;
-
           currentWeather.appendChild(hCity);
           currentWeather.appendChild(ptemp);
           currentWeather.appendChild(pwind);
           currentWeather.appendChild(pHumidity);
           pUvi.appendChild(sUvi);
           currentWeather.appendChild(pUvi);
+          // UV Index color codes
           if (uviInd <= 2) {
             //favourable
             sUvi.style.background = "green";
