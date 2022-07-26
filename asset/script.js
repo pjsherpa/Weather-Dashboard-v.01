@@ -1,6 +1,7 @@
-var searchforCity = document.getElementById("searchforCity");
+var searchforCityInput = document.getElementById("searchforCity");
 var searchbtn = document.getElementsByClassName("main");
-
+// var formCity = document.querySelector("#form-input");
+// console.log(formCity);
 var clearbtn = document.getElementsByClassName("clear");
 var listBtn = document.getElementById("listBtn");
 var currentWeather = document.getElementById("weatherContainer");
@@ -48,7 +49,7 @@ function storeSearches() {
 
 var handleFormSubmit = function (event) {
   event.preventDefault();
-  var cityName = searchforCity.value.trim();
+  var cityName = searchforCityInput.value.trim();
   if (cityName) {
     getCitySearch(cityName);
 
@@ -65,6 +66,7 @@ var handleFormSubmit = function (event) {
 
 var buttonClickHandler = function (event) {
   event.preventDefault();
+  searchforCityInput.value = "";
   var selectCity = event.target.textContent;
   console.log(selectCity);
   if (selectCity) {
@@ -101,7 +103,7 @@ function getCitySearch(search) {
           // current weather Display
           var hCity = document.createElement("h3");
           var cityTitle = document.createElement("i");
-          var city = searchforCity.value.trim();
+          var city = searchforCityInput.value.trim();
           cityTitle.textContent = city.toUpperCase();
           // converted dt to date
           var htoday = document.createElement("i");
