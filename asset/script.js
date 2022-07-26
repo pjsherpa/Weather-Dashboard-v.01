@@ -15,7 +15,7 @@ function renderSearch() {
     var previousSearches = previousSearch[i];
     var li = document.createElement("li");
     li.classList = "btn btn-secondary data-city";
-    li.style.marginTop = "1px";
+    li.style.marginTop = "3px";
     li.style.width = "18rem";
     li.textContent = previousSearches;
     li.value.trim = previousSearches;
@@ -90,7 +90,7 @@ function getCitySearch(search) {
     .then(function (data, search) {
       var latitude = data.coord.lat;
       var longitude = data.coord.lon;
-
+      console.log(data);
       var urlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}&cnt=5`;
       console.log(urlForecast);
       fetch(urlForecast)
