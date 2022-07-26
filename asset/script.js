@@ -1,7 +1,5 @@
 var searchforCityInput = document.getElementById("searchforCity");
 var searchbtn = document.getElementsByClassName("main");
-// var formCity = document.querySelector("#form-input");
-// console.log(formCity);
 var clearbtn = document.getElementsByClassName("clear");
 var listBtn = document.getElementById("listBtn");
 var currentWeather = document.getElementById("weatherContainer");
